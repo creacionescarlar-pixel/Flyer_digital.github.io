@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facility Services - Soluciones Integrales</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta extraída directamente de la identidad de tu logotipo
+                        brand: {
+                            dark: '#0B192C',       /* Navy profundo corporativo */
+                            slate: '#1E3E62',      /* Azul acero de soporte */
+                            accent: '#008DDA',     /* Azul eléctrico vibrante */
+                            cyan: '#41C9E2',       /* Cian higiénico / de limpieza */
+                            gold: '#FFB200',       /* Ámbar de precisión técnica */
+                            charcoal: '#2D3748',   /* Gris carbón de textos */
+                            surface: '#030712',    /* Fondo de tarjetas */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+        }
+        .sector-tab.active {
+            background-color: #008DDA;
+            color: white;
+            border-color: #41C9E2;
+            box-shadow: 0 10px 25px -5px rgba(0, 141, 218, 0.4);
+        }
+        .animate-fade {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex items-center justify-center p-3 sm:p-6 md:p-8">
+
+    <!-- Tarjeta Principal del Flyer -->
+    <div class="max-w-5xl w-full bg-brand-surface rounded-3xl overflow-hidden shadow-2xl border border-slate-800/80 flex flex-col lg:flex-row">
+        
+        <!-- Lateral Izquierdo: Presentación y Logotipo de la Empresa -->
+        <div class="lg:w-5/12 bg-gradient-to-br from-brand-dark via-brand-slate to-brand-surface p-6 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-800/60">
+            <div>
+                <!-- CONTENEDOR DE TU LOGOTIPO REAL -->
+                <div class="mb-8">
+                    <div class="bg-white/95 p-3 rounded-2xl inline-block shadow-xl border border-brand-cyan/20">
+                        <!-- Img con fallback en caso de error o retraso de carga -->
+                        <img id="brand-logo" 
+                             src="Logo Final Facility Services.png" 
+                             alt="Facility Services Logo" 
+                             class="h-14 sm:h-16 w-auto object-contain"
+                             onerror="this.style.display='none'; document.getElementById('logo-fallback').classList.remove('hidden');">
+                        
+                        <!-- Fallback Vectorial en caso de que no cargue localmente -->
+                        <div id="logo-fallback" class="hidden flex items-center gap-3 pr-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-accent to-brand-cyan flex items-center justify-center text-white font-extrabold text-xl">
+                                FS
+                            </div>
+                            <div class="text-left">
+                                <p class="text-brand-dark font-extrabold text-base leading-none tracking-tight">FACILITY SERVICES</p>
+                                <p class="text-brand-accent text-[9px] font-bold tracking-widest leading-none mt-1">SOLUCIONES INTEGRALES</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mensaje de Fuerza de Marca -->
+                <span class="px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-xs font-semibold text-brand-cyan uppercase tracking-widest">
+                    Socio Estratégico B2B
+                </span>
+                
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight mt-4 mb-4">
+                    Operatividad <span class="text-brand-cyan">Invisible</span>,<br>
+                    Rentabilidad <span class="text-brand-gold">Garantizada</span>.
+                </h2>
+                
+                <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                    Centralizamos el mantenimiento predictivo, la higienización especializada y la gestión de infraestructura bajo un modelo unificado. No somos un gasto, somos eficiencia medible para su organización.
+                </p>
+            </div>
+
+            <!-- Información Normativa y de Seguridad HSE -->
+            <div class="mt-8 pt-6 border-t border-slate-800/60">
+                <div class="flex items-center gap-3">
+                    <div class="p-2.5 bg-brand-dark/80 rounded-xl text-brand-gold border border-brand-slate/60 shadow-inner">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-200">Garantía Normativa, HSE & PRL</p>
+                        <p class="text-[11px] text-slate-400">Técnicos certificados, asegurados y con equipamiento (EPP).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lateral Derecho: Contenido Dinámico, Pestañas e Informe Interactivo -->
+        <div class="lg:w-7/12 p-6 sm:p-8 flex flex-col justify-between bg-slate-950/40">
+            <div>
+                <!-- Encabezado de la Sección -->
+                <div class="mb-6">
+                    <span class="text-xs font-bold text-brand-cyan uppercase tracking-widest">Nuestra Cobertura de Especialidad</span>
+                    <h3 class="text-2xl font-bold text-white mt-1">Seleccione su línea de Negocio</h3>
+                </div>
+
+                <!-- Selector de Sectores / Pestañas -->
+                <div class="grid grid-cols-2 gap-2 mb-6">
+                    <button onclick="switchSector('corp')" id="tab-corp" class="sector-tab p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-bold text-slate-300 transition-all active flex items-center justify-center gap-2">
+                        🏢 Oficinas y Sedes
+                    </button>
+                    <button onclick="switchSector('clinic')" id="tab-clinic" class="sector-tab p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-bold text-slate-300 transition-all flex items-center justify-center gap-2">
+                        🦷 Clínicas y Labs
+                    </button>
+                    <button onclick="switchSector('school')" id="tab-school" class="sector-tab p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-bold text-slate-300 transition-all flex items-center justify-center gap-2">
+                        🏫 Colegios y Áreas Educativas
+                    </button>
+                    <button onclick="switchSector('ind')" id="tab-ind" class="sector-tab p-3 rounded-xl bg-slate-900/60 border border-slate-800 text-xs font-bold text-slate-300 transition-all flex items-center justify-center gap-2">
+                        ⚙️ Sector Industrial
+                    </button>
+                </div>
+
+                <!-- Caja de Contenido Descriptivo -->
+                <div class="bg-slate-900/30 rounded-2xl p-5 border border-slate-800/80 min-h-[160px]">
+                    <!-- Corporativo -->
+                    <div id="content-corp" class="sector-content animate-fade">
+                        <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-accent"></span>
+                            Eficiencia Operativa en Sedes Corporativas
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Garantizamos la disponibilidad de sistemas, el confort térmico y la pulcritud necesaria para maximizar el desempeño laboral en sus oficinas administrativas.
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">🔹 Planes de higienización mensual y alfombras.</li>
+                            <li class="flex items-center gap-2">🔹 Mantenimiento preventivo HVAC y eléctrico.</li>
+                            <li class="flex items-center gap-2">🔹 Optimización de OPEX de servicios generales y Higienización.</li>
+                            <li class="flex items-center gap-2">🔹 Respuesta a incidencias críticas en &lt; -24 horas.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Clínicas -->
+                    <div id="content-clinic" class="sector-content hidden animate-fade">
+                        <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                            Bioseguridad de Nivel Clínico y de Laboratorio
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Desinfectamos e higienizamos áreas críticas bajo rigurosas normativas sanitarias locales e internacionales, protegiendo a pacientes y profesionales.
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">🟢 Sanitización microbiológica certificada.</li>
+                            <li class="flex items-center gap-2">🟢 Mantenimiento de compresores y sistemas de vacío.</li>
+                            <li class="flex items-center gap-2">🟢 Planes mensuales de esterilización y control HSE.</li>
+                            <li class="flex items-center gap-2">🟢 Suministramos productos químicos para el área Clínica y Labs.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Colegios -->
+                    <div id="content-school" class="sector-content hidden animate-fade">
+                        <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-gold"></span>
+                            Espacios Educativos Protegidos y Seguros
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Aseguramos un entorno sano para el aprendizaje diario de alumnos y docentes mediante desinfección preventiva y preservación de instalaciones físicas.
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">🔸 Higienización intensiva y planificadas de aulas y zonas comunes (según un Plan de Trabajo).</li>
+                            <li class="flex items-center gap-2">🔸 Inspección preventiva de sistemas de agua y tableros (con nuestro Personal de Servicios Generales).</li>
+                            <li class="flex items-center gap-2">🔸 Control certificado de plagas y sanidad ambiental (con productos químicos certificados y no peligrosos).</li>
+                            <li class="flex items-center gap-2">🔸 Planes con tarifas fijas mensuales.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Industrial -->
+                    <div id="content-ind" class="sector-content hidden animate-fade">
+                        <h4 class="text-base font-bold text-white mb-2 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                            Mantenimiento de Planta y Continuidad Operativa
+                        </h4>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                            Asumimos la operatividad e ingeniería de soporte de su planta industrial o complejo logístico, mitigando paros no programados de producción.
+                        </p>
+                        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                            <li class="flex items-center gap-2">🔺 Mantenimiento predictivo basado en datos de activos.</li>
+                            <li class="flex items-center gap-2">🔺 Higienización pesada y técnica de líneas de producción.</li>
+                            <li class="flex items-center gap-2">🔺 Planes mensuales alineados a sus KPIs.</li>
+                            <li class="flex items-center gap-2">🔺 Soporte especializado para: HVAC, Portones eléctricos, CCTV, Elevadores, entre otros.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SIMULADOR INTERACTIVO DE "INFORME DE GESTIÓN MENSUAL (KPI)" -->
+            <div class="mt-6 bg-slate-900/80 border border-slate-800 rounded-2xl p-4">
+                <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-800/80">
+                    <div class="flex items-center gap-2">
+                        <span class="flex h-2 w-2 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-cyan opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-cyan"></span>
+                        </span>
+                        <h5 class="text-xs font-extrabold text-slate-200 uppercase tracking-wider">Informe de Gestión Mensual (KPI)</h5>
+                    </div>
+                    <span class="text-[10px] bg-brand-slate text-brand-cyan font-bold px-2.5 py-0.5 rounded-full">Mes de Reporte</span>
+                </div>
+                
+                <!-- Dashboard de KPIs que cambia según la pestaña seleccionada -->
+                <div class="grid grid-cols-3 gap-3" id="kpi-dashboard">
+                    <!-- KPI 1 -->
+                    <div class="bg-brand-dark/40 p-3 rounded-xl border border-slate-800 text-center">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase leading-none">Disponibilidad</p>
+                        <p class="text-lg sm:text-xl font-extrabold text-white mt-1.5" id="kpi-val-1">99.85%</p>
+                        <span class="text-[9px] text-emerald-400 font-semibold" id="kpi-status-1">▲ Objetivo Cumplido</span>
+                    </div>
+                    <!-- KPI 2 -->
+                    <div class="bg-brand-dark/40 p-3 rounded-xl border border-slate-800 text-center">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase leading-none">Ahorro OPEX</p>
+                        <p class="text-lg sm:text-xl font-extrabold text-brand-cyan mt-1.5" id="kpi-val-2">15.4%</p>
+                        <span class="text-[9px] text-emerald-400 font-semibold" id="kpi-status-2">▲ Reducción Costos</span>
+                    </div>
+                    <!-- KPI 3 -->
+                    <div class="bg-brand-dark/40 p-3 rounded-xl border border-slate-800 text-center">
+                        <p class="text-[10px] text-slate-400 font-bold uppercase leading-none">OTs Resueltos</p>
+                        <p class="text-lg sm:text-xl font-extrabold text-brand-gold mt-1.5" id="kpi-val-3">98.2%</p>
+                        <span class="text-[9px] text-slate-400 font-semibold" id="kpi-status-3">En Tiempo SLA</span>
+                    </div>
+                </div>
+                <p class="text-[10px] text-slate-400 mt-2 leading-relaxed text-center sm:text-left">
+                    💡 <strong class="text-slate-200">Planes Mensuales Garantizados:</strong> Integramos mantenimiento e higienización periódica con informes estructurados mensuales para respaldar su toma de decisiones.
+                </p>
+            </div>
+
+            <!-- Botones de Acción Comercial -->
+            <div class="mt-6 flex flex-col sm:flex-row gap-3">
+                <button onclick="copiarContacto()" class="flex-1 py-3 px-4 bg-slate-900 hover:bg-slate-800/80 border border-slate-800 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 transition-all active:scale-95">
+                    <svg class="w-4 h-4 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+                    </svg>
+                    Copiar Datos de Contacto
+                </button>
+                <a href="https://wa.me/+584163445943?text=Hola.%20Vi%20su%20Flyer%20interactivo.%20Deseo%20solicitar%20la%20inspección%20de%20cortes%C3%ADa%20sin%20costo%20para%20mis%20instalaciones." 
+                   target="_blank" 
+                   class="flex-1 py-3 px-4 bg-brand-accent hover:bg-sky-500 text-brand-dark font-extrabold rounded-xl text-xs flex items-center justify-center gap-2 shadow-lg shadow-brand-accent/25 transition-all active:scale-95">
+                    Solicitar Inspección Sin Costo ⚡
+                </a>
+            </div>
+            
+            <!-- Notificación Temporal de Copiado -->
+            <div id="toast" class="fixed bottom-4 right-4 bg-brand-accent text-slate-950 text-xs font-bold py-2.5 px-4 rounded-xl shadow-lg transition-opacity duration-300 opacity-0 pointer-events-none">
+                Datos de contacto copiados al portapapeles.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de Interactividad -->
+    <script>
+        // Datos simulados para cada sector (Basado en KPIs de la vida real de FM)
+        const kpiData = {
+            corp: {
+                val1: "99.85%", status1: "▲ Objetivo Cumplido",
+                val2: "15.4%", status2: "▲ Reducción OPEX",
+                val3: "98.2%", status3: "SLA - Planes de trabajo"
+            },
+            clinic: {
+                val1: "100.0%", status1: "▲ Estéril Certificado",
+                val2: "12.8%", status2: "▲ Consumo Eficiente",
+                val3: "99.1%", status3: "Higiene Validada"
+            },
+            school: {
+                val1: "99.92%", status1: "▲ Instalación Segura",
+                val2: "14.1%", status2: "▲ Presupuesto Optimizado",
+                val3: "97.5%", status3: "Mantenimiento Preventivo"
+            },
+            ind: {
+                val1: "99.98%", status1: "▲ Continuidad OEE",
+                val2: "18.6%", status2: "▲ Ahorro Correctivo",
+                val3: "99.5%", status3: "MTTR Reducido"
+            }
+        };
+
+        function switchSector(sectorId) {
+            // Desactivar todas las pestañas
+            document.querySelectorAll('.sector-tab').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Ocultar todos los contenidos
+            document.querySelectorAll('.sector-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // Activar la seleccionada
+            document.getElementById('tab-' + sectorId).classList.add('active');
+            document.getElementById('content-' + sectorId).classList.remove('hidden');
+
+            // Actualizar simulador de KPIs en tiempo real
+            const data = kpiData[sectorId];
+            document.getElementById('kpi-val-1').innerText = data.val1;
+            document.getElementById('kpi-status-1').innerText = data.status1;
+            document.getElementById('kpi-val-2').innerText = data.val2;
+            document.getElementById('kpi-status-2').innerText = data.status2;
+            document.getElementById('kpi-val-3').innerText = data.val3;
+            document.getElementById('kpi-status-3').innerText = data.status3;
+        }
+
+        function copiarContacto() {
+            const datos = "FACILITY SERVICES - Soluciones Integrales\nContacto Comercial y Operativo\nEmail: contacto@serviciosfacility.com\nTeléfono: +58 4163445943\nPlanes Integrales de Mantenimiento e Higienización.";
+            
+            // Copiar al portapapeles usando el método estándar recomendado para iFrames
+            const tempInput = document.createElement("textarea");
+            tempInput.value = datos;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Mostrar Toast Informativo
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
